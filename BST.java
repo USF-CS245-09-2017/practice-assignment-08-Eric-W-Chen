@@ -59,11 +59,11 @@ public class BST<String> {
 			BSTNode n = new BSTNode(value);
 			return n;
 		}
-		else if (node.compareTo(value)>0){
-			node.right=insert(node.right, value);
+		else if (node.data.compareTo(value)>0){
+			node.left=insert(node.left, value);
 		}
 		else{
-			node.left = insert(node.left, value);
+			node.right = insert(node.right, value);
 		}
 		return node;
 	}
@@ -76,18 +76,19 @@ public class BST<String> {
 		return find(this.root, value);
 	}
 
-	public boolean find(BSTNode node, Comparable value){
+	private boolean find(BSTNode node, Comparable value){
 		if(node==null){
 			return false;
 		}
-		if(node.compareTo(value)==0){
+		if(node.data.compareTo(value)==0){
 			return true;
 		}
-		else if(node.compareTo(value)>0){
-			return find(node.right, value);
-		}
-		else{
+		else if(node.data.compareTo(value)>0){
 			return find(node.left, value);
 		}
+		else{
+			return find(node.right, value);
+		}
 	}
+
 }
